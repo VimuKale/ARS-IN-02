@@ -1,0 +1,32 @@
+.outerdiv1 {
+    padding: .5rem;
+    text-align: center;
+    /* border: 1 solid white;
+    border-radius: 25px 25px 0px 0px; 
+    background-color: rgba(255, 255, 255, 0.7);*/
+    margin: 100px auto 0px auto;
+  }
+  .f1 {
+    text-align: center;
+  }
+  .adosar1 {
+    padding: 1rem;
+    border-style: solid;
+    border-width: 1px;
+    border-color: #3590e6;
+    background-color: #96ccff;
+    border-radius: 9999px;
+    width: 400px;
+  }
+  
+  @media screen and (max-width:768px) {
+    .adosar1{
+      width:350px;
+    }
+}
+
+@media screen and (max-width:600px) {
+  .adosar1{
+    width:350px;
+  }
+}

@@ -1,0 +1,26 @@
+.color-nav{
+    background-color: rgba(255,255,255,1.0) !important;
+    color: blue;
+}
+.navbar-brand{
+    color: #4285F4 !important;
+    font-size: 25px !important;
+    font-weight: bolder !important;
+}
+
+.nav .dropdown-item{
+    background-color: #4285F4 !important;
+}
+
+.navlink{
+    color:black!important;
+    margin: auto 10px auto 10px;
+    text-decoration: none;
+    font-size: 20px !important;
+}
+.navlink:hover{
+    color: #4285F4 !important;
+}
+.navlink:active{
+    color: orangered !important;
+}
