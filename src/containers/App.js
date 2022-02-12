@@ -1,3 +1,4 @@
+import { useState, useEffect } from 'react';
 import './App.css';
 import Login from '../components/Login/Login';
 import CoverPage from '../components/CoverPage/CoverPage';
@@ -17,32 +18,54 @@ import {
 
 import { users } from './DemoArray';
 
+import ShelterPage from '../components/ShelterPage/ShelterPage';
+import AdoptionListingForm from '../components/AdoptionListingForm/AdoptionListingForm';
+import SupplyListingForm from '../components/SupplyListingForm/SupplyListingForm';
+import ViewRescueRequest from '../components/ViewRescueRequest/ViewRescueRequest';
+
+
+
 function App() {
+
+  const [isUser, setIsUser] = useState(false);
+  const [isShelter, setShelter] = useState(false);
+  const [isAdmin, setAdmin] = useState(false);
+
   return (
+
+
     <div className="App">
       <Router>
-          <Navigation/>  
-            <Routes>
-              <Route path="/" element={<CoverPage />}/>
-              <Route path='/login' element={<Login />}/>
-              <Route path="/user" element={<UserPage />}/>
-              <Route path="/user/rescuerequest" element={<RescueRequestForm />}/>
-              <Route path="/user/thingstable" element={  
-                  <>
-                    <SearchBarTT />
-                    <ThingsTable things={users} />
-                  </>
-              }/>
-              <Route path="/user/adoptionlisting" element={  
-                  <>
-                    <SearchBarAL />
-                    <Scroll>
-                      <AdoptionListing robots={users} />
-                    </Scroll>
-                  </>
-              }/>
-            </Routes>
-        </Router>
+        <Navigation isUser={isUser} isShelter={isShelter} />
+        <Routes>
+          <Route path="/" element={<CoverPage />} />
+          <Route path='/login' element={<Login setIsUser={setIsUser} setShelter={setShelter} />} />
+          <Route path="/user" element={<UserPage />} />
+          <Route path="/user/rescuerequest" element={<RescueRequestForm />} />
+
+          <Route path="/shelter" element={<ShelterPage />} />
+          <Route path="/listpet" element={<AdoptionListingForm />} />
+          <Route path="/listsupplies" element={<SupplyListingForm />} />
+          <Route path="/viewrescuerequest" element={<ViewRescueRequest />} />
+
+
+
+          <Route path="/user/thingstable" element={
+            <>
+              <SearchBarTT />
+              <ThingsTable things={users} />
+            </>
+          } />
+          <Route path="/user/adoptionlisting" element={
+            <>
+              <SearchBarAL />
+              <Scroll>
+                <AdoptionListing robots={users} />
+              </Scroll>
+            </>
+          } />
+        </Routes>
+      </Router>
     </div>
   );
 }

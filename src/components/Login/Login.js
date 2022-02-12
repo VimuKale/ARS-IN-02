@@ -1,19 +1,21 @@
-import React,{useState} from "react";
+import React, { useState } from "react";
 import { Form, Button, Col, Row } from 'react-bootstrap';
 import './Login.css';
 
-const Login = () => {
+const Login = ({ setIsUser, setShelter }) => {
 
     const [validated, setValidated] = useState(false);
 
     const handleSubmit = (event) => {
-      const form = event.currentTarget;
-      if (form.checkValidity() === false) {
-        event.preventDefault();
-        event.stopPropagation();
-      }
-  
-      setValidated(true);
+        const form = event.currentTarget;
+        if (form.checkValidity() === false) {
+            event.preventDefault();
+            event.stopPropagation();
+            setIsUser(true);
+            setShelter(true);
+        }
+
+        setValidated(true);
     };
 
 
@@ -61,16 +63,16 @@ const Login = () => {
                             <option>Shelter</option>
                             <option>User</option>
                             <option>Admin</option>
-                        </Form.Select> 
+                        </Form.Select>
                     </Form.Group>
                 </Row>
 
-               
+
                 <Button className="submit-btn" variant="primary" type="submit"  >
-                        SignIn
+                    SignIn
                 </Button>
 
-                      
+
 
                 <div className="reg-link">
                     <a href="#0" >Shelter Registration</a>
@@ -78,7 +80,7 @@ const Login = () => {
                     <a href="#0" >User Registration</a>
                 </div>
 
-                </Form>
+            </Form>
         </div>
     );
 

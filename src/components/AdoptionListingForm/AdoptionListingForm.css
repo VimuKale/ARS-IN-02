@@ -1,0 +1,65 @@
+.ado-li-cont{
+    background-color: rgba(255,255,255,.7);
+    width: 700px;
+    height: auto;
+    margin: auto;
+    margin-top: 150px;
+    padding-top: 0px;
+    padding-bottom: 50px;
+    justify-content: center;
+    border: 1px solid White;
+    border-radius: 25px;
+    box-shadow: 2px 2px 4px 2px rgba( 0, 0, 0, 0.2 );
+    margin-bottom: 100px;
+}
+
+h1{
+    padding-top: 20px;
+    padding-left: 30px;
+    padding-bottom: 5px;
+    text-align: left;
+}
+
+.frm-grp-fild{
+    text-align: left;
+}
+
+.frm-grp-fild .frm-lbl{
+    font-size: 20px;
+    font-weight: 400;
+}
+
+.form-cont{
+    padding: 30px;
+}
+
+.ado-sub-btn{
+    margin-top: 10px;
+    float: left;
+    width: 200px;
+    font-size: 20px;
+    font-weight: 400;
+    border: 1px solid White;
+    border-radius: 10px;
+}
+
+@media screen and (min-width:924px) {
+    .ado-li-cont{
+        width: 900px;
+        height: auto;
+    }
+}
+
+
+
+@media screen and (max-width:700px) {
+    .ado-li-cont{
+        width: 350px;
+        height: auto;
+    }
+    .ado-sub-btn{
+        float: none;
+    }
+   
+
+}
