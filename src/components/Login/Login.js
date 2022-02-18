@@ -1,36 +1,62 @@
 import React, { useState } from "react";
 import { Form, Button, Col, Row } from 'react-bootstrap';
+import { NavLink } from "react-router-dom";
 import './Login.css';
 
 const Login = ({ setIsUser, setShelter }) => {
 
-    const [validated, setValidated] = useState(false);
 
-    const handleSubmit = (event) => {
-        const form = event.currentTarget;
-        if (form.checkValidity() === false) {
-            event.preventDefault();
-            event.stopPropagation();
-            setIsUser(true);
-            setShelter(true);
-        }
+    const [email, setEmail] = useState("");
+    const [password, setPassword] = useState("");
+    const [userType, setUserType] = useState("");
 
-        setValidated(true);
-    };
 
+
+    function onSubmitVal() {
+        console.log(email, password, userType);
+        fetch("http://localhost:3002/login", {
+            method: "post",
+            headers: {
+                "Content-Type": "application/json",
+                Accept: "application/json",
+            },
+            body: JSON.stringify({
+                email: email,
+                password: password,
+                userType: userType
+
+            }),
+        })
+            .then((response) => response.json())
+            .then((data) => {
+                console.log(data);
+                if (data === "success" && userType === "User") {
+                    alert("USER LOGIN SUCCESSFULL")
+                    setIsUser(true);
+                }
+                else if (data === "success" && userType === "Shelter") {
+                    alert("SHELTER LOGIN SUCCESSFULL")
+                    setShelter(true);
+                }
+                else if (data === "failed to Login") {
+                    alert("EMPTY FIELDS OR INVALID CRADENTIALS")
+                }
+            });
+    }
 
     return (
 
         <div className="login-container">
             <h1>Login</h1>
 
-            <Form noValidate validated={validated} onSubmit={handleSubmit} className='form-filds-container'>
+            <div className='form-filds-container'>
 
                 <Form.Floating className="mb-3 ml-3">
                     <Form.Control
                         id="floatingInputCustom"
                         type="email"
                         placeholder="name@example.com"
+                        onChange={event => setEmail(event.target.value)}
                         required
                     />
                     <label htmlFor="floatingInputCustom">Email address</label>
@@ -46,6 +72,7 @@ const Login = ({ setIsUser, setShelter }) => {
                         id="floatingPasswordCustom"
                         type="password"
                         placeholder="Password"
+                        onChange={event => setPassword(event.target.value)}
                         required
                     />
                     <label htmlFor="floatingPasswordCustom">Password</label>
@@ -59,7 +86,7 @@ const Login = ({ setIsUser, setShelter }) => {
                 <Row>
                     <Form.Group className='frm-grp-fild' size="lg" as={Col} controlId="petType">
                         <Form.Label className='frm-lbl label-left'>User Type</Form.Label>
-                        <Form.Select defaultValue="Shelter" required>
+                        <Form.Select defaultValue="Shelter" required onChange={event => setUserType(event.target.value)}>
                             <option>Shelter</option>
                             <option>User</option>
                             <option>Admin</option>
@@ -68,19 +95,20 @@ const Login = ({ setIsUser, setShelter }) => {
                 </Row>
 
 
-                <Button className="submit-btn" variant="primary" type="submit"  >
+                <Button className="submit-btn" variant="primary" type="submit" onClick={onSubmitVal}>
                     SignIn
                 </Button>
 
 
 
                 <div className="reg-link">
-                    <a href="#0" >Shelter Registration</a>
+
+                    <NavLink to={"/shelterregistration"} className="navlink" >Shelter Registration</NavLink>
                     <br />
-                    <a href="#0" >User Registration</a>
+                    <NavLink to={"/userregistration"} className="navlink" >User Registration</NavLink>
                 </div>
 
-            </Form>
+            </div>
         </div>
     );
 

@@ -14,8 +14,8 @@
     background-color: #96CCFF;
     display: inline-block;
     border-radius: 1rem;
-    padding: var(--spacing-medium);
-    margin: var(--spacing-small);
+    padding: 1rem;
+    margin: .5rem;
     border-width: .25rem;
     box-shadow: 4px 4px 8px 0px rgba( 0, 0, 0, 0.2 );
 }

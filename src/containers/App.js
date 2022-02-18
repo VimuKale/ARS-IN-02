@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import './App.css';
 import Login from '../components/Login/Login';
 import CoverPage from '../components/CoverPage/CoverPage';
@@ -22,6 +22,9 @@ import ShelterPage from '../components/ShelterPage/ShelterPage';
 import AdoptionListingForm from '../components/AdoptionListingForm/AdoptionListingForm';
 import SupplyListingForm from '../components/SupplyListingForm/SupplyListingForm';
 import ViewRescueRequest from '../components/ViewRescueRequest/ViewRescueRequest';
+import ShelterRegistration from '../components/ShelterRegister/ShelterRegister';
+import AdminRegisterForm from '../components/AdminRegisterForm/AdminRegisterForm';
+import UserRegister from '../components/UserRegister/UserRegister';
 
 
 
@@ -29,7 +32,7 @@ function App() {
 
   const [isUser, setIsUser] = useState(false);
   const [isShelter, setShelter] = useState(false);
-  const [isAdmin, setAdmin] = useState(false);
+  // const [isAdmin, setAdmin] = useState(false);
 
   return (
 
@@ -42,11 +45,13 @@ function App() {
           <Route path='/login' element={<Login setIsUser={setIsUser} setShelter={setShelter} />} />
           <Route path="/user" element={<UserPage />} />
           <Route path="/user/rescuerequest" element={<RescueRequestForm />} />
-
+          <Route path="/shelterregistration" element={<ShelterRegistration />} />
           <Route path="/shelter" element={<ShelterPage />} />
           <Route path="/listpet" element={<AdoptionListingForm />} />
           <Route path="/listsupplies" element={<SupplyListingForm />} />
           <Route path="/viewrescuerequest" element={<ViewRescueRequest />} />
+          <Route path="/adminregistration" element={<AdminRegisterForm />} />
+          <Route path="/userregistration" element={<UserRegister />} />
 
 
 

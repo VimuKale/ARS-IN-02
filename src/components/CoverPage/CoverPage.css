@@ -1,3 +1,93 @@
 .cover-greet{
-    margin-top: 300px;
+    margin-top: 200px;
+}
+
+.caro-outer{
+   margin-left: auto;
+   margin-right: auto; 
+}
+.caro{
+    margin-top: 90px;
+    margin-bottom: 100px;
+    height: 600px;
+    width: 1000px;
+    margin-left: auto;
+    margin-right: auto; 
+    border-radius: 25px;
+    overflow: hidden;
+}
+img{
+    background-size: cover;
+}
+
+blockquote{
+    border-left:none
+}
+
+.outer-quote-cont{
+    display: flex;
+    /* flex-flow: column wrap; */
+    
+    justify-content:space-evenly;
+
+}
+
+.quote-badge{
+    background-color: rgba(0, 0, 0, 0.2);   
+}
+
+.quote-box{
+    text-align: center;
+    background-color: #96CCFF;
+    display: inline-block;
+    border-radius: 1rem;
+    padding: var(--spacing-medium);
+    margin: var(--spacing-small);
+    border-width: .25rem;
+    box-shadow: 4px 4px 8px 0px rgba( 0, 0, 0, 0.2 );
+    flex-wrap: wrap;
+}
+
+.quotation-mark{
+    
+    margin-top: -10px;
+    font-weight: bold;
+    font-size:100px;
+    color:white;
+    font-family: "Times New Roman", Georgia, Serif;
+    
+}
+
+.quote-text{
+    
+    font-size: 19px;
+    margin-top: -65px;
+}
+
+@media screen and (max-width:1200px) {
+    .caro{
+        width: 900px;
+        height: 600px;
+    }
+}
+@media screen and (max-width:992px) {
+    .caro{
+        width: 700px;
+        height: 450px;
+    }
+}
+@media screen and (max-width:768px) {
+    .caro{
+        width: 600px;
+        height: 400px;
+    }
+}
+
+@media screen and (max-width:600px) {
+    .caro{
+        margin-top: 130px;   
+        width: 350px;
+        height: 180px;
+        
+    }
 }

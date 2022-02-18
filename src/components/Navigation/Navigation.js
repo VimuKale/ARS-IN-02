@@ -7,7 +7,7 @@ const Navigation = ({ isUser, isShelter }) => {
 
     return (
         <div>
-            <Navbar className="color-nav" collapseOnSelect expand="lg" fixed='top'>
+            <Navbar collapseOnSelect expand="lg" fixed='top' className="color-nav">
                 <Container>
                     <Navbar.Brand as={NavLink} to={"/"}>Animal Rescue System(ARS)⚡</Navbar.Brand>
                     <Navbar.Toggle aria-controls="responsive-navbar-nav" />
@@ -15,7 +15,7 @@ const Navigation = ({ isUser, isShelter }) => {
                         <Nav className="me-auto">
                         </Nav>
                         <Nav>
-                            {/* {isShelter
+                            {isShelter
                                 ?
                                 <>
                                     <NavLink to={"/shelter"} className="navlink">Shelter Profile</NavLink>
@@ -24,9 +24,6 @@ const Navigation = ({ isUser, isShelter }) => {
                                     <NavLink to={"/viewrescuerequest"} className="navlink">View Rescue Request</NavLink>
                                 </>
                                 :
-                                <NavLink to={"/login"} className="navlink" >Login</NavLink>
-                            } */}
-                            {
                                 isUser
                                     ?
                                     <>
@@ -46,7 +43,7 @@ const Navigation = ({ isUser, isShelter }) => {
                 </Container>
             </Navbar>
 
-        </div>
+        </div >
     );
 
 }
