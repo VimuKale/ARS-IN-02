@@ -25,6 +25,7 @@ import ViewRescueRequest from '../components/ViewRescueRequest/ViewRescueRequest
 import ShelterRegistration from '../components/ShelterRegister/ShelterRegister';
 import AdminRegisterForm from '../components/AdminRegisterForm/AdminRegisterForm';
 import UserRegister from '../components/UserRegister/UserRegister';
+import Footer from '../components/FooterComp/FooterComp';
 
 
 
@@ -71,6 +72,7 @@ function App() {
           } />
         </Routes>
       </Router>
+      <Footer />
     </div>
   );
 }

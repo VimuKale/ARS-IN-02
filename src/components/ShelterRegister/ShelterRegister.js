@@ -15,7 +15,7 @@ const ShelterRegistration = () => {
                         <Form.Control type="text" placeholder="Enter Shelter Name" />
                     </Form.Group>
 
-                    <Form.Group className='mb-3 frm-grp-fild' as={Col} controlId="formGridState">
+                    <Form.Group className='mb-3 frm-grp-fild' as={Col} controlId="formGridtype">
                         <Form.Label className='frm-lbl'>Category</Form.Label>
                         <Form.Select defaultValue="Dog Shelter">
                             <option>Dog Shelter</option>
@@ -27,7 +27,7 @@ const ShelterRegistration = () => {
                         </Form.Select>
                     </Form.Group>
 
-                    <Form.Group className='frm-grp-fild' as={Col} md="4" controlId="formGridPassword">
+                    <Form.Group className='frm-grp-fild' as={Col} md="4" controlId="formGridPhno">
                         <Form.Label className='frm-lbl'>Phone Number</Form.Label>
                         <Form.Control type="text"
                             onKeyPress={(event) => {

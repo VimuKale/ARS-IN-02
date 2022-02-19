@@ -6,6 +6,7 @@
    margin-left: auto;
    margin-right: auto; 
 }
+
 .caro{
     margin-top: 90px;
     margin-bottom: 100px;
@@ -16,6 +17,14 @@
     border-radius: 25px;
     overflow: hidden;
 }
+
+.quote-quote{
+    margin-bottom: 100px;
+}
+
+
+
+
 img{
     background-size: cover;
 }

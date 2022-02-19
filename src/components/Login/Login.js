@@ -23,24 +23,28 @@ const Login = ({ setIsUser, setShelter }) => {
             body: JSON.stringify({
                 email: email,
                 password: password,
-                userType: userType
+                type: userType
 
             }),
         })
             .then((response) => response.json())
             .then((data) => {
                 console.log(data);
-                if (data === "success" && userType === "User") {
+                if (data.type === "User") {
                     alert("USER LOGIN SUCCESSFULL")
                     setIsUser(true);
                 }
-                else if (data === "success" && userType === "Shelter") {
+                else if (data.type === "Shelter") {
                     alert("SHELTER LOGIN SUCCESSFULL")
                     setShelter(true);
                 }
-                else if (data === "failed to Login") {
-                    alert("EMPTY FIELDS OR INVALID CRADENTIALS")
+                else if (data === "unable to get User") {
+                    alert("Unable To Get User");
                 }
+                else if (data === "Wrong Credentials") {
+                    alert("Wrong Credentials");
+                }
+
             });
     }
 

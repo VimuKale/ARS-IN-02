@@ -4,7 +4,6 @@ import { Carousel } from 'react-bootstrap';
 function CoverPage() {
   return (
     <>
-
       <div className='caro-outer'>
         <Carousel className='caro'>
           <Carousel.Item interval={1000}>
@@ -46,90 +45,9 @@ function CoverPage() {
         </Carousel>
       </div>
 
-      <div className='outer-quote-cont'>
-        <div className="container">
-          <blockquote className="quote-box">
-            <p className="quotation-mark">
-              “
-            </p>
-            <p className="quote-text">
-              Don't believe anything that you read on the internet, it may be fake.
-            </p>
-            <hr />
-            <div className="blog-post-actions">
-              <p className="blog-post-bottom pull-left">
-                Abraham Lincoln
-              </p>
-            </div>
-          </blockquote>
-        </div>
-        <div className="container">
-          <blockquote className="quote-box">
-            <p className="quotation-mark">
-              “
-            </p>
-            <p className="quote-text">
-              Don't believe anything that you read on the internet, it may be fake.
-            </p>
-            <hr />
-            <div className="blog-post-actions">
-              <p className="blog-post-bottom pull-left">
-                Abraham Lincoln
-              </p>
-            </div>
-          </blockquote>
-        </div>
-        <div className="container">
-          <blockquote className="quote-box">
-            <p className="quotation-mark">
-              “
-            </p>
-            <p className="quote-text">
-              Don't believe anything that you read on the internet, it may be fake.
-            </p>
-            <hr />
-            <div className="blog-post-actions">
-              <p className="blog-post-bottom pull-left">
-                Abraham Lincoln
-              </p>
-            </div>
-          </blockquote>
-        </div>
-        <div className="container">
-          <blockquote className="quote-box">
-            <p className="quotation-mark">
-              “
-            </p>
-            <p className="quote-text">
-              Don't believe anything that you read on the internet, it may be fake.
-            </p>
-            <hr />
-            <div className="blog-post-actions">
-              <p className="blog-post-bottom pull-left">
-                Abraham Lincoln
-              </p>
-            </div>
-          </blockquote>
-        </div>
-        <div className="container">
-          <blockquote className="quote-box">
-            <p className="quotation-mark">
-              “
-            </p>
-            <p className="quote-text">
-              Don't believe anything that you read on the internet, it may be fake.
-            </p>
-            <hr />
-            <div className="blog-post-actions">
-              <p className="blog-post-bottom pull-left">
-                Abraham Lincoln
-              </p>
-            </div>
-          </blockquote>
-        </div>
+      <div className='quote-quote'>
+        Hiiiiiiiiiiiiiiiiiiii
       </div>
-
-
     </>
   );
 }

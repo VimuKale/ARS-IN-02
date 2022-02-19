@@ -8,14 +8,14 @@ const UserRegister = () => {
         <div className='she-reg-cont'>
 
             <h1>User Registration👤</h1>
-            <Form className='form-cont'>
+            <div className='form-cont'>
                 <Row className="mb-3">
                     <Form.Group className='frm-grp-fild' as={Col} md="6" controlId="formGridUserName">
                         <Form.Label className='frm-lbl' >User Name</Form.Label>
                         <Form.Control type="text" placeholder="Enter User Name" />
                     </Form.Group>
 
-                    <Form.Group className='frm-grp-fild' as={Col} md="6" controlId="formGridPassword">
+                    <Form.Group className='frm-grp-fild' as={Col} md="6" controlId="formGridPhno">
                         <Form.Label className='frm-lbl'>Phone Number</Form.Label>
                         <Form.Control type="text"
                             onKeyPress={(event) => {
@@ -76,7 +76,7 @@ const UserRegister = () => {
 
 
 
-            </Form>
+            </div>
         </div>
 
     );
