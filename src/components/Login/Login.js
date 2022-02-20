@@ -38,6 +38,10 @@ const Login = ({ setIsUser, setShelter }) => {
                     alert("SHELTER LOGIN SUCCESSFULL")
                     setShelter(true);
                 }
+                else if (data.type === "Admin") {
+                    alert("ADMIN LOGIN SUCCESSFULL")
+                    setShelter(true);
+                }
                 else if (data === "unable to get User") {
                     alert("Unable To Get User");
                 }

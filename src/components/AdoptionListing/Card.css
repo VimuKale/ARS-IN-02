@@ -21,7 +21,7 @@
 }
 
 
-
+/* 
 .grow {
     -moz-osx-font-smoothing: grayscale;
     backface-visibility: hidden;
@@ -53,7 +53,36 @@
   .grow-large:active {
     transform: scale(.95);
   }
+   */
+  
+   .adop-delete-btn{
+    margin-top: 0px;
+    float: left;
+    width: 200px;
+    font-size: 20px;
+    font-weight: 400;
+    border: 1px solid transparent;
+    border-radius: 10px;
+    background-color: rgb(8, 69, 148);
+    color: white;
+    float: none;
+    margin-bottom: 10px;
+  }
+  .adop-update-btn{
+    margin-top: 0px;
+    float: left;
+    width: 200px;
+    font-size: 20px;
+    font-weight: 400;
+    border: 1px solid transparent;
+    border-radius: 10px;
+    background-color: #084594;
+    color: white;
+    float: none;
+    
+  }
   
 
+  
 
  

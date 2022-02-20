@@ -6,19 +6,16 @@
     bottom: 0;
     width: 100%;
   }
-  
-  .contact {
-    /* padding: 5px; */
-  }
-  a {
+
+.contact-logo{
     margin: 10px;
-  }
-  
-  .logo {
+  } 
+   
+.logo {
     height: 50px;
     width: 50px;
     border-radius: 25px;
   }
-  .container {
+.container {
     justify-content: center;
   }

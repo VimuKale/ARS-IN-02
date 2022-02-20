@@ -1,7 +1,7 @@
 import React from "react";
 import "./SearchBarTT.css";
 
-const SearchBarTT = ({ searchChange1 }) => {
+const SearchBarTT = ({ setthingssearchfield }) => {
   return (
     <div className="outerdiv1">
       <h1 className="f1">Things We Need</h1>
@@ -9,7 +9,7 @@ const SearchBarTT = ({ searchChange1 }) => {
         className="adosar1"
         type="search"
         placeholder="Search Thing  To Donate With Shelter Name"
-        onChange={searchChange1}
+        onChange={event => (setthingssearchfield(event.target.value))}
       />
     </div>
   );

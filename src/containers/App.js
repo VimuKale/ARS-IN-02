@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import './App.css';
 import Login from '../components/Login/Login';
 import CoverPage from '../components/CoverPage/CoverPage';
@@ -35,9 +35,26 @@ function App() {
   const [isShelter, setShelter] = useState(false);
   // const [isAdmin, setAdmin] = useState(false);
 
+  const [things, setThings] = useState([]);
+  const [thingssearchfield, setthingssearchfield] = useState('');
+
+
+  useEffect(() => {
+    fetch('http://localhost:3002/items', {
+      method: "get",
+      headers: {
+        "Content-Type": "application/json",
+        Accept: "application/json",
+      }
+    })
+      .then(response => response.json())
+      .then(things => { setThings(things) });
+  }, [])
+
+  const filteredThings = things.filter(thing => {
+    return thing.s_name.toLowerCase().includes(thingssearchfield.toLowerCase());
+  })
   return (
-
-
     <div className="App">
       <Router>
         <Navigation isUser={isUser} isShelter={isShelter} />
@@ -58,8 +75,8 @@ function App() {
 
           <Route path="/user/thingstable" element={
             <>
-              <SearchBarTT />
-              <ThingsTable things={users} />
+              <SearchBarTT setthingssearchfield={setthingssearchfield} />
+              <ThingsTable things={filteredThings} />
             </>
           } />
           <Route path="/user/adoptionlisting" element={

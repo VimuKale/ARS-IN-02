@@ -45,9 +45,48 @@ function CoverPage() {
         </Carousel>
       </div>
 
-      <div className='quote-quote'>
-        Hiiiiiiiiiiiiiiiiiiii
+      <div className='quote-quote' style={{ flexWrap: "wrap" }}>
+        <div className='dd'>
+          <img alt='robots' src={`https://robohash.org/${5}?set=set4`} />
+          <div>
+            <h3>hello</h3>
+            <p>billo</p>
+            <p>xyxxxx</p>
+            <p>yjtdsakcvkjsda</p>
+            <button type='submit'>Submit</button>
+          </div>
+        </div>
+
+        <div className='dd'>
+          <img alt='robots' src={`https://robohash.org/${5}?set=set4`} />
+          <div>
+            <h3>hello</h3>
+            <p>billo</p>
+            <p>xyxxxx</p>
+            <p>yjtdsakcvkjsda</p>
+          </div>
+        </div>
+        <div className='dd'>box 1</div>
+        <div className='dd'>box 1</div>
+        <div className='dd'>box 1</div>
+        <div className='dd'>box 1</div>
+        <div className='dd'>box 1</div>
+        <div className='dd'>box 1</div>
+        <div className='dd'>box 1</div>
+        <div className='dd'>box 1</div>
+        <div className='dd'>box 1</div>
+        <div className='dd'>box 1</div>
+        <div className='dd'>box 1</div>
+        <div className='dd'>box 1</div>
+        <div className='dd'>box 1</div>
+        <div className='dd'>box 1</div>
+        <div className='dd'>box 1</div>
+        <div className='dd'>box 1</div>
+        <div className='dd'>box 1</div>
+        <div className='dd'>box 1</div>
+        <div className='dd'>box 1</div>
       </div>
+
     </>
   );
 }
