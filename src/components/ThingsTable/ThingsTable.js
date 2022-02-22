@@ -4,9 +4,8 @@ import { Fragment } from "react";
 import "./ThingsTable.css";
 
 
-const ThingsTable = ({ things }) => {
+const ThingsTable = ({ things, Utype }) => {
 
-  const utype = "User";
 
   return (
     <Fragment>
@@ -59,7 +58,7 @@ const ThingsTable = ({ things }) => {
                   <td className="al grow">{things[i].status}</td>
 
                   {
-                    (utype === "Shelter") ?
+                    (Utype === "Shelter") ?
                       <td>
                         <div>
                           <button className='tbl-delete-btn' >Delete</button><br />
@@ -68,7 +67,7 @@ const ThingsTable = ({ things }) => {
                       </td>
 
                       :
-                      (utype === "Admin") ?
+                      (Utype === "Admin") ?
                         <td>
                           <div>
                             <button className='tbl-delete-btn' >Delete</button><br />

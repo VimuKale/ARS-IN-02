@@ -1,0 +1,42 @@
+.info-container {
+    margin-bottom: 50px;
+  }
+  
+  .title {
+    color: rgb(255, 211, 45);
+  }
+  
+  .info-head {
+    font-size: large;
+    color: rgb(255, 211, 45);
+  }
+  .bold {
+    font-size: 30px;
+  }
+  
+  .images {
+    margin: 50px;
+    border: 1xp solid black;
+  }
+  
+  img-card {
+    height: 500px;
+    border: 3px solid black;
+    border-radius: 25px;
+    overflow: hidden;
+  }
+  .gallery {
+    display: flex;
+    justify-content: center;
+    color: rgb(255, 211, 45);
+    background-color: rgb(8, 69, 148);
+    border: 1px solid black;
+  }
+  
+  .img-caption {
+    font-weight: 700;
+    background-color: rgb(255, 211, 45);
+    /* color: rgb(8, 69, 148); */
+    color: black;
+    text-align: center;
+  }

@@ -1,9 +1,10 @@
 import React, { useState } from "react";
 import { Form, Button, Col, Row } from 'react-bootstrap';
-import { NavLink } from "react-router-dom";
+import { Link } from "react-router-dom";
+import { Redirect } from "react-router-dom";
 import './Login.css';
 
-const Login = ({ setIsUser, setShelter }) => {
+const Login = ({ setIsUser, setIsShelter, setUtype, setIsAdmin }) => {
 
 
     const [email, setEmail] = useState("");
@@ -33,14 +34,18 @@ const Login = ({ setIsUser, setShelter }) => {
                 if (data.type === "User") {
                     alert("USER LOGIN SUCCESSFULL")
                     setIsUser(true);
+                    setUtype(data.type);
+                    <Redirect to="/user" />
                 }
                 else if (data.type === "Shelter") {
                     alert("SHELTER LOGIN SUCCESSFULL")
-                    setShelter(true);
+                    setIsShelter(true);
+                    setUtype(data.type);
+                    <Redirect to="/shelter" />
                 }
                 else if (data.type === "Admin") {
                     alert("ADMIN LOGIN SUCCESSFULL")
-                    setShelter(true);
+                    setIsAdmin(true);
                 }
                 else if (data === "unable to get User") {
                     alert("Unable To Get User");
@@ -111,9 +116,9 @@ const Login = ({ setIsUser, setShelter }) => {
 
                 <div className="reg-link">
 
-                    <NavLink to={"/shelterregistration"} className="navlink" >Shelter Registration</NavLink>
+                    <Link to={"/shelterregistration"} className="navlink" >Shelter Registration</Link>
                     <br />
-                    <NavLink to={"/userregistration"} className="navlink" >User Registration</NavLink>
+                    <Link to={"/userregistration"} className="navlink" >User Registration</Link>
                 </div>
 
             </div>

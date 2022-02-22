@@ -3,7 +3,7 @@ import "./ShelterPage.css"
 
 function ShelterPage() {
   return (
-    <h1 className="Shelter-greet">Hellooo User</h1>
+    <h1 className="Shelter-greet">Hellooo Shelter</h1>
   )
 }
 

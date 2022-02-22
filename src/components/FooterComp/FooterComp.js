@@ -4,6 +4,7 @@ import "./FooterComp.css";
 function FooterComp() {
     return (
         <>
+
             <div className="main-footer">
                 <div className="container">
                     <div className="row">
@@ -13,9 +14,11 @@ function FooterComp() {
                             <img className="logo" alt='pic' src={require("./saathlogo.jpg")} />
                             <h4 className="list-unstyled">
                                 <li>
+
                                     "Saath Animal Welfare Trust" is a shelter in our community. It
                                     is a non-profiting organisation which is run by volunteers. They
                                     rescue a variety of animals including dogs, cats & etc.
+
                                 </li>
 
                             </h4>

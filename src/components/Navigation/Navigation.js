@@ -1,50 +1,41 @@
 import React from "react";
 import './Navigation.css';
 import { Navbar, Nav, Container } from 'react-bootstrap';
-import { NavLink } from "react-router-dom";
+import { Link } from "react-router-dom";
+import UserNavigation from "./UserNavigation/UserNavigation";
+import ShelterNavigation from "./ShelterNavigation/ShelterNavigation";
+import AdminNavigation from "./AdminNavigation/AdminNavigation";
 
-const Navigation = ({ isUser, isShelter }) => {
-
-    return (
-        <div>
-            <Navbar collapseOnSelect expand="lg" fixed='top' className="color-nav">
-                <Container>
-                    <Navbar.Brand as={NavLink} to={"/"}>Animal Rescue System(ARS)⚡</Navbar.Brand>
-                    <Navbar.Toggle aria-controls="responsive-navbar-nav" />
-                    <Navbar.Collapse id="responsive-navbar-nav">
-                        <Nav className="me-auto">
-                        </Nav>
-                        <Nav>
-                            {isShelter
-                                ?
-                                <>
-                                    <NavLink to={"/shelter"} className="navlink">Shelter Profile</NavLink>
-                                    <NavLink to={"/listpet"} className="navlink">List Pet</NavLink>
-                                    <NavLink to={"/listsupplies"} className="navlink">List Supplies</NavLink>
-                                    <NavLink to={"/viewrescuerequest"} className="navlink">View Rescue Request</NavLink>
-                                </>
-                                :
-                                isUser
-                                    ?
-                                    <>
-                                        <NavLink to={"/user"} className="navlink" >User Profile</NavLink>
-                                        <NavLink to={"/user/rescuerequest"} className="navlink" >Rescue Request</NavLink>
-                                        <NavLink to={"/user/thingstable"} className="navlink" >Things We Need</NavLink>
-                                        <NavLink to={"/user/adoptionlisting"} className="navlink" >Adoption Listing</NavLink>
-                                    </>
-                                    :
-                                    <NavLink to={"/login"} className="navlink" >Login</NavLink>
+const Navigation = ({ isUser, setIsUser, setIsShelter, isShelter, isAdmin, setIsAdmin }) => {
 
 
-                            }
+    const Navi = isUser ?
+        (<UserNavigation setIsUser={setIsUser} />)
+        : ((isShelter) ?
+            (<ShelterNavigation setIsShelter={setIsShelter} />)
+            : ((isAdmin) ?
+                (<AdminNavigation setIsAdmin={setIsAdmin} />)
+                :
+                (<div>
+                    <Navbar collapseOnSelect expand="lg" fixed='top' className="color-nav">
+                        <Container>
+                            <Navbar.Brand as={Link} to={"/"}>Animal Rescue System(ARS)⚡</Navbar.Brand>
+                            <Navbar.Toggle aria-controls="responsive-navbar-nav" />
+                            <Navbar.Collapse id="responsive-navbar-nav">
+                                <Nav className="me-auto">
+                                </Nav>
+                                <Link to={"/login"} className="navlink" >Login</Link>
+                            </Navbar.Collapse>
+                        </Container>
+                    </Navbar>
 
-                        </Nav>
-                    </Navbar.Collapse>
-                </Container>
-            </Navbar>
+                </div >
+                )
+            )
+        )
 
-        </div >
-    );
+
+    return Navi;
 
 }
 
