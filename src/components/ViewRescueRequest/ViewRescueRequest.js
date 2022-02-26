@@ -3,8 +3,11 @@ import "./ViewRescueRequest.css"
 
 function ViewRescueRequest() {
   return (
-    <div>ViewRescueRequest</div>
+    <>
+      <h1 className='greet-view'>ViewRescueRequest</h1>
+    </>
+
   )
 }
 
-export default ViewRescueRequest
+export default ViewRescueRequest;

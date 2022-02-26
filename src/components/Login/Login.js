@@ -4,12 +4,12 @@ import { Link } from "react-router-dom";
 import { Redirect } from "react-router-dom";
 import './Login.css';
 
-const Login = ({ setIsUser, setIsShelter, setUtype, setIsAdmin }) => {
+const Login = ({ setIsUser, setIsShelter, setUtype, setIsAdmin, setShelterData }) => {
 
 
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
-    const [userType, setUserType] = useState("");
+    const [userType, setUserType] = useState("Shelter");
 
 
 
@@ -31,21 +31,38 @@ const Login = ({ setIsUser, setIsShelter, setUtype, setIsAdmin }) => {
             .then((response) => response.json())
             .then((data) => {
                 console.log(data);
+
+
                 if (data.type === "User") {
                     alert("USER LOGIN SUCCESSFULL")
-                    setIsUser(true);
-                    setUtype(data.type);
-                    <Redirect to="/user" />
+                    // setUtype(data.type);
+                    window.localStorage.setItem('user', true)
+                    window.localStorage.setItem('data', JSON.stringify(data));
+                    setIsUser(window.localStorage.getItem('user'));
+                    < Redirect to="/user" />
                 }
+
+
+
                 else if (data.type === "Shelter") {
                     alert("SHELTER LOGIN SUCCESSFULL")
-                    setIsShelter(true);
-                    setUtype(data.type);
-                    <Redirect to="/shelter" />
+                    // setUtype(data.type);
+                    // setShelterData(data);
+                    window.localStorage.setItem('shelter', true)
+                    window.localStorage.setItem('data', JSON.stringify(data));
+                    setIsShelter(window.localStorage.getItem('shelter'));
+                    < Redirect to="/shelter" />
                 }
+
+
+
                 else if (data.type === "Admin") {
                     alert("ADMIN LOGIN SUCCESSFULL")
-                    setIsAdmin(true);
+                    // setUtype(data.type);
+                    window.localStorage.setItem('admin', true)
+                    window.localStorage.setItem('data', JSON.stringify(data));
+                    setIsAdmin(window.localStorage.getItem('admin'));
+                    <Redirect to="/admin" />
                 }
                 else if (data === "unable to get User") {
                     alert("Unable To Get User");
@@ -54,7 +71,8 @@ const Login = ({ setIsUser, setIsShelter, setUtype, setIsAdmin }) => {
                     alert("Wrong Credentials");
                 }
 
-            });
+            })
+            .catch((err) => alert("WRONG CRADENTIALS"));
     }
 
     return (

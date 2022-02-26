@@ -6,14 +6,15 @@ import { Link, NavLink } from "react-router-dom";
 
 function AdminNavigation({ setIsAdmin }) {
     const handleLogout = () => {
-        setIsAdmin(false)
+        window.localStorage.clear();
+        setIsAdmin(window.localStorage.getItem('admin'))
         window.location.reload();
     }
     return (
         <> <div>
             <Navbar className="color-nav" collapseOnSelect expand="lg" fixed='top'>
                 <Container>
-                    <Navbar.Brand as={NavLink} to={"/"}>Shelter Nav⚡</Navbar.Brand>
+                    <Navbar.Brand as={NavLink} to={"/"}>ARS-ADMIN⚡</Navbar.Brand>
                     <Navbar.Toggle aria-controls="responsive-navbar-nav" />
                     <Navbar.Collapse id="responsive-navbar-nav">
                         <Nav className="me-auto">

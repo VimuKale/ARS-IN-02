@@ -1,4 +1,49 @@
 .info-container {
+  margin-bottom: 50px;
+  margin-right: 15px;
+}
+
+.title {
+  color: rgb(255, 211, 45);
+}
+
+.info-head {
+  font-size: large;
+  color: rgb(255, 211, 45);
+}
+.bold {
+  font-size: 30px;
+}
+
+.images {
+  margin-top: 50px;
+  margin-left: 50px;
+  margin-right: 50px;
+  border: 1xp solid black;
+}
+
+.img-cards {
+  border-radius: 25px !important;
+  margin: 50px 20px 0px 10px !important;
+}
+.gallery {
+  display: flex;
+  justify-content: center;
+  color: rgb(255, 211, 45);
+  background-color: rgb(8, 69, 148);
+  border: 1px solid black;
+}
+
+.img-caption {
+  font-weight: 700;
+  background-color: rgb(255, 211, 45);
+  /* color: rgb(8, 69, 148); */
+  color: black;
+  text-align: center;
+}
+
+
+/* .info-container {
     margin-bottom: 50px;
   }
   
@@ -36,7 +81,6 @@
   .img-caption {
     font-weight: 700;
     background-color: rgb(255, 211, 45);
-    /* color: rgb(8, 69, 148); */
     color: black;
     text-align: center;
-  }
+  } */

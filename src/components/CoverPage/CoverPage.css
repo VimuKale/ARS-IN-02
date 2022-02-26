@@ -1,4 +1,115 @@
 .card {
+  background-color: rgb(8, 69, 148) !important;
+  margin-top: 100px !important;
+  width: 100%;
+  border: 1px solid transparent !important;
+  color: whitesmoke;
+}
+.info-head {
+  font-size: large;
+  color: rgb(255, 211, 45);
+}
+
+.cover-greet {
+  margin-top: 200px;
+}
+
+.caro-outer {
+  margin-left: auto;
+  margin-right: auto;
+  
+}
+
+.caro {
+  /* margin-top: 40px; */
+  margin-bottom: 50px;
+  height: 100%;
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+
+  overflow: hidden;
+}
+
+.quote-quote {
+  margin-bottom: 100px;
+}
+
+img {
+  background-size: cover;
+}
+
+blockquote {
+  border-left: none;
+}
+
+.outer-quote-cont {
+  display: flex;
+  /* flex-flow: column wrap; */
+
+  justify-content: space-evenly;
+}
+
+.quote-badge {
+  background-color: rgba(0, 0, 0, 0.2);
+}
+
+.quote-box {
+  text-align: center;
+  background-color: #96ccff;
+  display: inline-block;
+  border-radius: 1rem;
+  padding: var(--spacing-medium);
+  margin: var(--spacing-small);
+  border-width: 0.25rem;
+  box-shadow: 4px 4px 8px 0px rgba(0, 0, 0, 0.2);
+  flex-wrap: wrap;
+}
+
+.quotation-mark {
+  margin-top: -10px;
+  font-weight: bold;
+  font-size: 100px;
+  color: white;
+  font-family: "Times New Roman", Georgia, Serif;
+}
+
+.quote-text {
+  font-size: 19px;
+  margin-top: -65px;
+}
+
+@media screen and (max-width: 1200px) {
+  .caro {
+    width: 100%;
+    height: 100%;
+  }
+}
+@media screen and (max-width: 992px) {
+  .caro {
+    width: 100%;
+    height: 100%;
+  }
+}
+@media screen and (max-width: 768px) {
+  .caro {
+    width: 100%;
+    height: 100%;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .caro {
+    /* margin-top: 130px; */
+    width: 100%;
+    height: 100%;
+  }
+  .card {
+    margin-top: 115px !important;
+  }
+}
+
+/* .card {
     background-color: rgb(8, 69, 148) !important;
     margin: 100px 40px 0px 40px !important;
   
@@ -46,7 +157,7 @@
   
   .outer-quote-cont {
     display: flex;
-    /* flex-flow: column wrap; */
+ 
   
     justify-content: space-evenly;
   }
@@ -105,13 +216,7 @@
       width: 350px;
       height: 180px;
     }
-  }
-
-
-
-
-
-
+  } */
 
 
 

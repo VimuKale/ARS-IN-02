@@ -17,8 +17,64 @@
     padding: 1rem;
     margin: .5rem;
     border-width: .25rem;
+    width: 400px;
     box-shadow: 4px 4px 8px 0px rgba( 0, 0, 0, 0.2 );
 }
+
+.img-size{
+  height: 300px;
+  width:360px;
+  border-radius: 25px !important;
+  object-fit:cover;
+}
+
+
+.adop-card-info{
+text-align: left;
+margin-top: 20px;
+}
+
+.adop-lbl{
+  font-weight: bolder;
+  font-size: 20px;
+  margin-left:10px ;
+}
+
+.adop-card-info .p-name{
+  font-weight: bolder;
+  font-size: 50px;
+  margin-left:10px ;
+}
+
+.adop-card-info .p-desc{
+  font-style: italic;
+  font-size: 20px;
+  margin-left:10px ;
+}
+
+.adop-card-info .p-type{
+  font-style: italic;
+  font-size: 20px;
+  margin-left:10px ;
+}
+
+.adop-card-info .s-name{
+  font-style: italic;
+  font-size: 20px;
+  margin-left:10px ;
+}
+.adop-card-info .s-contact{
+  margin-top: 5px;
+  font-style: italic;
+  font-size: 20px;
+  margin-left:10px ;
+}
+.adop-card-info .s-addr{
+  font-style: italic;
+  font-size: 20px;
+  margin-left:10px ;
+}
+
 
 
 /* 

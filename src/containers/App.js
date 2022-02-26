@@ -16,7 +16,7 @@ import {
   Route,
 } from "react-router-dom";
 
-import { users } from './DemoArray';
+// import { users } from './DemoArray';
 
 import ShelterPage from '../components/ShelterPage/ShelterPage';
 import AdoptionListingForm from '../components/AdoptionListingForm/AdoptionListingForm';
@@ -28,21 +28,24 @@ import UserRegister from '../components/UserRegister/UserRegister';
 import Footer from '../components/FooterComp/FooterComp';
 import { Redirect } from 'react-router-dom';
 
-
+import AdminPage from '../components/AdminPage/AdminPage';
 
 function App() {
 
-  const [isUser, setIsUser] = useState(false);
-  const [isShelter, setIsShelter] = useState(false);
-  const [isAdmin, setIsAdmin] = useState(false);
+  const [isUser, setIsUser] = useState(window.localStorage.getItem('user'));
+  const [isShelter, setIsShelter] = useState(window.localStorage.getItem('shelter'))
+  const [isAdmin, setIsAdmin] = useState(window.localStorage.getItem('admin'))
 
-  const [Utype, setUtype] = useState("");
 
   const [things, setThings] = useState([]);
   const [thingssearchfield, setthingssearchfield] = useState('');
 
+  const [pets, setPets] = useState([]);
+  const [petssearchfield, setpetssearchfield] = useState('');
+
 
   useEffect(() => {
+
     fetch('http://localhost:3002/items', {
       method: "get",
       headers: {
@@ -52,80 +55,122 @@ function App() {
     })
       .then(response => response.json())
       .then(things => { setThings(things) });
-  }, [])
+
+
+    fetch('http://localhost:3002/pets', {
+      method: "get",
+      headers: {
+        "Content-Type": "application/json",
+        Accept: "application/json",
+      }
+    })
+      .then(response => response.json())
+      .then(pets => { setPets(pets) });
+
+  }
+    , [])
+
+
+
+
+
+
+
 
   const filteredThings = things.filter(thing => {
     return thing.s_name.toLowerCase().includes(thingssearchfield.toLowerCase());
   })
+
+  const filteredPets = pets.filter(pet => {
+    return pet.s_name.toLowerCase().includes(petssearchfield.toLowerCase());
+  })
+
+
   return (
     <div className="App">
       <Router>
         <Navigation isUser={isUser} setIsUser={setIsUser} isShelter={isShelter} setIsShelter={setIsShelter} isAdmin={isAdmin} setIsAdmin={setIsAdmin} />
         <Switch>
 
+
+
           <Route exact path="/" >
             <CoverPage />
           </Route>
 
+
+
+          {/* LOGIN MODULE */}
           <Route path='/login'>
             {
-
               isUser ? (<Redirect to="/user" />)
                 : (isShelter ? (<Redirect to="/shelter" />) :
                   (
                     isAdmin ? (<Redirect to="/admin" />)
-                      : <Login setIsUser={setIsUser} setIsShelter={setIsShelter} setUtype={setUtype} />
+                      : <Login setIsUser={setIsUser} setIsShelter={setIsShelter} setIsAdmin={setIsAdmin} />
                   )
                 )
             }
-            {/* if(isUser){
-              <Redirect to="/user" />
-            }
-            else if(isShelter){
-              <Redirect to="/shelter" />
-            }
-            else if(isAdmin){
-              <Redirect to="/shelter" />
-            }
-            else{
-              <Login setIsUser={setIsUser} setShelter={setIsShelter} setIsAdmin={setIsAdmin} />
-            } */}
-
           </Route>
+
+
 
           <Route exact path="/user">
             {isUser ? <UserPage /> : <Redirect to="/" />}
           </Route>
 
-          <Route path="/shelter">
+          <Route exact path="/shelter">
             {isShelter ? <ShelterPage /> : <Redirect to="/" />}
-
           </Route>
 
+          <Route exact path="/admin">
+            {isAdmin ? <AdminPage /> : <Redirect to="/" />}
+          </Route>
 
           <Route path="/user/rescuerequest">
             {isUser ? <RescueRequestForm /> : <Redirect to="/" />}
           </Route>
 
 
+          {/* PET LISTING MODULE */}
           <Route path="/listpet">
             {isShelter ? <AdoptionListingForm /> : <Redirect to="/" />}
           </Route>
 
 
-          <Route path="/listsupplies"><SupplyListingForm /></Route>
-          <Route path="/viewrescuerequest" ><ViewRescueRequest /></Route>
+          {/* SUPPLY LISTING MODULE */}
+          <Route path="/listsupplies">
+            {isShelter ? <SupplyListingForm /> : <Redirect to="/" />}
 
+
+
+          </Route>
+          <Route path="/admin/viewrescuerequest" >
+            {isAdmin ? <ViewRescueRequest /> : <Redirect to="/" />}
+
+          </Route>
+
+
+
+
+          {/* REGISTRATION MODULE */}
 
           <Route path="/userregistration">
             <UserRegister />
           </Route>
+
           <Route path="/shelterregistration">
             <ShelterRegistration />
           </Route>
+
           <Route path="/adminregistration">
             <AdminRegisterForm />
           </Route>
+
+
+
+
+          {/* DONATION MODULE */}
 
           <Route path="/user/thingstable">
             {
@@ -133,7 +178,7 @@ function App() {
                 ?
                 <>
                   <SearchBarTT setthingssearchfield={setthingssearchfield} />
-                  <ThingsTable things={filteredThings} Utype={Utype} />
+                  <ThingsTable things={filteredThings} />
                 </>
                 :
                 <Redirect to="/" />
@@ -146,26 +191,69 @@ function App() {
                 ?
                 <>
                   <SearchBarTT setthingssearchfield={setthingssearchfield} />
-                  <ThingsTable things={filteredThings} Utype={Utype} />
+                  <ThingsTable things={filteredThings} />
                 </>
                 :
                 <Redirect to="/" />
             }
           </Route>
 
+          <Route path="/admin/thingstable">
+            {
+              isAdmin
+                ?
+                <>
+                  <SearchBarTT setthingssearchfield={setthingssearchfield} />
+                  <ThingsTable things={filteredThings} />
+                </>
+                :
+                <Redirect to="/" />
+            }
+          </Route>
+
+
+
+
+          {/* ADOPTION LISTING MODULE */}
+
           <Route path="/user/adoptionlisting">
 
             {isUser ?
               <>
-                <SearchBarAL />
+                <SearchBarAL setpetssearchfield={setpetssearchfield} />
                 <Scroll>
-                  <AdoptionListing robots={users} />
+                  <AdoptionListing pets={filteredPets} />
                 </Scroll>
               </>
               :
               <Redirect to="/" />}
 
           </Route>
+
+          <Route path="/shelter/adoptionlisting">
+            {isShelter ?
+              <>
+                <SearchBarAL setpetssearchfield={setpetssearchfield} />
+                <Scroll>
+                  <AdoptionListing pets={filteredPets} />
+                </Scroll>
+              </>
+              :
+              <Redirect to="/" />}
+          </Route>
+
+          <Route path="/admin/adoptionlisting">
+            {isAdmin ?
+              <>
+                <SearchBarAL setpetssearchfield={setpetssearchfield} />
+                <Scroll>
+                  <AdoptionListing pets={filteredPets} />
+                </Scroll>
+              </>
+              :
+              <Redirect to="/" />}
+          </Route>
+
 
         </Switch>
       </Router>

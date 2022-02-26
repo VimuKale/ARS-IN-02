@@ -4,10 +4,13 @@ import { Navbar, Nav, Container } from 'react-bootstrap';
 import { Link, NavLink } from "react-router-dom";
 
 const UserNavigation = ({ setIsUser }) => {
+
     const handleLogout = () => {
-        setIsUser(false)
+        window.localStorage.clear();
+        setIsUser(window.localStorage.getItem('user'))
         window.location.reload();
     }
+
     return (
         <div>
             <Navbar className="color-nav" collapseOnSelect expand="lg" fixed='top'>

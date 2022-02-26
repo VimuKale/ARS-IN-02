@@ -5,7 +5,8 @@ import { Link, NavLink } from "react-router-dom";
 
 const ShelterNavigation = ({ setIsShelter }) => {
     const handleLogout = () => {
-        setIsShelter(false)
+        window.localStorage.clear();
+        setIsShelter(window.localStorage.getItem('shelter'))
         window.location.reload();
     }
     return (
@@ -22,6 +23,7 @@ const ShelterNavigation = ({ setIsShelter }) => {
                             <Link to={"/shelter"} className="navlink">Shelter Profile</Link>
                             <Link to={"/listpet"} className="navlink">List Pet</Link>
                             <Link to={"/shelter/thingstable"} className="navlink" >Things We Need</Link>
+                            <Link to={"/shelter/adoptionlisting"} className="navlink">View Adoption Listing</Link>
                             <Link to={"/listsupplies"} className="navlink">List Supplies</Link>
                             <Link to={"/viewrescuerequest"} className="navlink">View Rescue Request</Link>
                             <Link to={"/"} className="navlink" onClick={handleLogout}>Logout</Link>
