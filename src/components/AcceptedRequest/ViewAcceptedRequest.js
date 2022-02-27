@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Card from './Card';
 // import { useState, useEffect } from 'react';
 // import "./AdoptionListing.css";
@@ -7,37 +7,45 @@ import Card from './Card';
 const ViewAcceptedRequest = ({ rrs }) => {
 
 	let data = JSON.parse(window.localStorage.getItem('data'));
+	const [show, setShow] = useState(false);
+	const [status, setStatus] = useState("Accepted");
+	const [statusid, setStatusID] = useState("");
+	const handleClose = () => setShow(false);
 
-
+	const handleupdatestatus = (event) => {
+		alert(event.target.value);
+		const ind = event.target.value;
+		setStatus(rrs[ind].status);
+		setStatusID(rrs[ind].status_id);
+		setShow(true);
+	}
 
 	function UpdateStatus(event) {
+
+		console.log(statusid);
+
 		fetch("http://localhost:3002/updatestatus", {
-			method: "post",
+			method: "put",
 			headers: {
 				"Content-Type": "application/json",
 				Accept: "application/json",
 			},
 			body: JSON.stringify({
-
+				status: status,
+				status_id: statusid
 			}),
 		}).then((response) => response.json())
-			.then((res) => {
-				if (res === "success") {
+			.then((message) => {
+				if (message === 'update done') {
+					alert("Record Updated");
+					setShow(false);
+					window.location.reload(false);
 
-					alert("Request Accepted");
-
-				}
-				if (res === "fail") {
-
-					alert("Failed To Accept Request");
-
+				} else {
+					alert("Failed To Update Record");
 				}
 			})
-			.catch(err => {
-
-				alert("Inavalid Data | Something Went Wrong");
-
-			})
+			.catch((err) => alert("Failed To Update Record!"));
 	}
 
 
@@ -64,14 +72,17 @@ const ViewAcceptedRequest = ({ rrs }) => {
 							r_id={rrs[i].r_id}
 							status_id={rrs[i].status_id}
 							status={rrs[i].status}
+							s_id={rrs[i].s_id}
 
 
 							UpdateStatus={UpdateStatus}
+							handleupdatestatus={handleupdatestatus}
 
-						// handleClose={handleClose}
-						// setShow={setShow}
-						// show={show}
-						// inde={i}
+							setStatus={setStatus}
+							handleClose={handleClose}
+							setShow={setShow}
+							show={show}
+							inde={i}
 						// loading={loading}
 						// setLoading={setLoading}
 

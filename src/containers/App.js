@@ -30,7 +30,7 @@ import { Redirect } from 'react-router-dom';
 
 import AdminPage from '../components/AdminPage/AdminPage';
 import RescueRequestCont from '../components/ViewRescueRequest/RescueRequestCont';
-
+import AcceptedRequestCont from '../components/AcceptedRequest/AcceptedRequestCont';
 function App() {
 
   const [isUser, setIsUser] = useState(window.localStorage.getItem('user'));
@@ -157,10 +157,10 @@ function App() {
           </Route>
 
 
-          {/* <Route path="/shelter/viewacceptedrequest" >
+          <Route path="/shelter/viewacceptedrequest" >
             {isShelter ? <AcceptedRequestCont /> : <Redirect to="/" />}
 
-          </Route> */}
+          </Route>
 
 
 

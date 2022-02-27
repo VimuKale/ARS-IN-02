@@ -6,7 +6,7 @@ const SearchBarAR = ({ setrrssearchfield }) => {
 	return (
 
 		<div className="outerdiv">
-			<h1 className='f1'>🚨 RESCUE REQUESTS 🚨</h1>
+			<h1 className='f1'>ACCEPTED RESCUE REQUESTS</h1>
 			<input
 				className='adosar'
 				type='search'

@@ -18,9 +18,6 @@ function AcceptedRequestCont() {
                 "Content-Type": "application/json",
                 Accept: "application/json",
             },
-            body: JSON.stringify({
-                s_id: data.s_id,
-            })
         })
             .then(response => response.json())
             .then(rrs => { setRRS(rrs) });
