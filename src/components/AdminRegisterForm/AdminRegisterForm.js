@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Col, Row, Form, Button } from 'react-bootstrap';
+import { Col, Row, Form, Button, Spinner } from 'react-bootstrap';
 import './AdminRegisterForm.css';
 
 const AdminRegisterForm = () => {
@@ -9,42 +9,54 @@ const AdminRegisterForm = () => {
     const [a_phno, seta_phno] = useState("");
     const [a_email, seta_email] = useState("");
     const [a_password, seta_password] = useState("");
+    const [a_c_password, seta_c_password] = useState("");
     const [a_addr, seta_addr] = useState("");
     const [a_city, seta_city] = useState("");
-    const [a_state, seta_state] = useState("");
+    const [a_state, seta_state] = useState("Maharashtra");
     const [a_zip, seta_zip] = useState("");
 
-    function onSubmitVal() {
-        console.log(a_name, a_phno, a_email, a_password, a_addr, a_city, a_state, a_zip);
+    const [loading, setLoading] = useState(false);
 
-        fetch("http://localhost:3002/adminregister", {
-            method: "post",
-            headers: {
-                "Content-Type": "application/json",
-                Accept: "application/json",
-            },
-            body: JSON.stringify({
-                a_name: a_name,
-                a_phno: a_phno,
-                a_email: a_email,
-                a_password: a_password,
-                a_addr: a_addr,
-                a_city: a_city,
-                a_state: a_state,
-                a_zip: a_zip,
+    const onSubmitVal = (e) => {
+        e.preventDefault();
+        if (a_c_password === a_password) {
+            setLoading(true);
+            fetch("http://localhost:3002/adminregister", {
+                method: "post",
+                headers: {
+                    "Content-Type": "application/json",
+                    Accept: "application/json",
+                },
+                body: JSON.stringify({
+                    a_name: a_name,
+                    a_phno: a_phno,
+                    a_email: a_email,
+                    a_password: a_password,
+                    a_addr: a_addr,
+                    a_city: a_city,
+                    a_state: a_state,
+                    a_zip: a_zip,
 
-            }),
-        })
-            .then((response) => response.json())
-            .then((data) => {
-                console.log(data);
-                if (data.message_type === "success") {
-                    alert("Admin Registered Successfully.")
-                }
-                else if (data.message === "fail") {
-                    alert("Unable To Register Admin")
-                }
-            });
+                }),
+            })
+                .then((response) => response.json())
+                .then((data) => {
+                    console.log(data);
+                    if (data.message_type === "success") {
+                        alert("Admin Registered Successfully.")
+                        setLoading(false);
+                        e.target.reset();
+                    }
+                    else if (data.message === "fail") {
+                        alert("Unable To Register Admin")
+                        setLoading(false)
+                    }
+                });
+        }
+        else {
+            alert("PASSWORD & CONFIRM PASSWORD DIDN'T MATCH")
+        }
+
     }
 
 
@@ -58,9 +70,9 @@ const AdminRegisterForm = () => {
         <div className='adm-reg-cont'>
 
             <h1>Admin Registration 🛡️</h1>
-            <div className='form-cont'>
+            <form onSubmit={onSubmitVal} className='form-cont'>
                 <Row className="mb-3">
-                    <Form.Group className='frm-grp-fild' as={Col} controlId="formGridAdminName">
+                    <Form.Group className='frm-grp-fild' as={Col} md="6" controlId="formGridAdminName">
                         <Form.Label className='frm-lbl' >Admin Name</Form.Label>
                         <Form.Control type="text" placeholder="Enter Admin Name" onChange={event => seta_name(event.target.value)} />
                     </Form.Group>
@@ -80,15 +92,22 @@ const AdminRegisterForm = () => {
                     </Form.Group>
                 </Row>
                 <Row className="mb-3">
-                    <Form.Group className='frm-grp-fild' as={Col} controlId="formGridEmail">
+                    <Form.Group className='frm-grp-fild' as={Col} md="4" controlId="formGridEmail">
                         <Form.Label className='frm-lbl' >Email</Form.Label>
                         <Form.Control type="email" placeholder="ex.abc@gmail.com" onChange={event => seta_email(event.target.value)} />
                     </Form.Group>
 
-                    <Form.Group className='frm-grp-fild' as={Col} controlId="formGridPassword">
+                    <Form.Group className='frm-grp-fild' as={Col} md="4" controlId="formGridPassword">
                         <Form.Label className='frm-lbl'>Password</Form.Label>
                         <Form.Control type="password" placeholder="Password" onChange={event => seta_password(event.target.value)} />
                     </Form.Group>
+
+                    <Form.Group className='frm-grp-fild' as={Col} md="4" controlId="formGridConfPassword">
+                        <Form.Label className='frm-lbl'>Confirm Password</Form.Label>
+                        <Form.Control type="password" placeholder="Password"
+                            onChange={event => seta_c_password(event.target.value)} />
+                    </Form.Group>
+
                 </Row>
 
                 <Form.Group className="mb-3 frm-grp-fild" controlId="formGridAddress1">
@@ -114,15 +133,23 @@ const AdminRegisterForm = () => {
                     </Form.Group>
 
                     <Form.Group className='frm-grp-fild' as={Col} controlId="formGridZip">
-                        <Form.Label className='frm-lbl'>Zip Code</Form.Label>
+                        <Form.Label className='frm-lbl'>Zip</Form.Label>
                         <Form.Control maxLength={6} placeholder='ex.413709' onChange={event => seta_zip(event.target.value)} />
                     </Form.Group>
                 </Row>
 
-                <Button className='adm-sub-btn' variant="primary" type="submit" onClick={onSubmitVal}>
-                    Register Admin
+                <Button className='adm-sub-btn' variant="primary" type="submit">
+                    {
+                        loading ? (
+                            <Spinner animation="border" variant="light" />
+                        )
+                            :
+                            (
+                                "Register Admin"
+                            )
+                    }
                 </Button>
-            </div>
+            </form>
         </div>
 
     );

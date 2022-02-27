@@ -21,7 +21,7 @@ import {
 import ShelterPage from '../components/ShelterPage/ShelterPage';
 import AdoptionListingForm from '../components/AdoptionListingForm/AdoptionListingForm';
 import SupplyListingForm from '../components/SupplyListingForm/SupplyListingForm';
-import ViewRescueRequest from '../components/ViewRescueRequest/ViewRescueRequest';
+
 import ShelterRegistration from '../components/ShelterRegister/ShelterRegister';
 import AdminRegisterForm from '../components/AdminRegisterForm/AdminRegisterForm';
 import UserRegister from '../components/UserRegister/UserRegister';
@@ -29,6 +29,7 @@ import Footer from '../components/FooterComp/FooterComp';
 import { Redirect } from 'react-router-dom';
 
 import AdminPage from '../components/AdminPage/AdminPage';
+import RescueRequestCont from '../components/ViewRescueRequest/RescueRequestCont';
 
 function App() {
 
@@ -146,9 +147,20 @@ function App() {
 
           </Route>
           <Route path="/admin/viewrescuerequest" >
-            {isAdmin ? <ViewRescueRequest /> : <Redirect to="/" />}
+            {isAdmin ? <RescueRequestCont /> : <Redirect to="/" />}
 
           </Route>
+
+          <Route path="/shelter/viewrescuerequest" >
+            {isShelter ? <RescueRequestCont /> : <Redirect to="/" />}
+
+          </Route>
+
+
+          {/* <Route path="/shelter/viewacceptedrequest" >
+            {isShelter ? <AcceptedRequestCont /> : <Redirect to="/" />}
+
+          </Route> */}
 
 
 

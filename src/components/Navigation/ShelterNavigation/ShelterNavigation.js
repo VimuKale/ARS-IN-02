@@ -25,7 +25,8 @@ const ShelterNavigation = ({ setIsShelter }) => {
                             <Link to={"/shelter/thingstable"} className="navlink" >Things We Need</Link>
                             <Link to={"/shelter/adoptionlisting"} className="navlink">View Adoption Listing</Link>
                             <Link to={"/listsupplies"} className="navlink">List Supplies</Link>
-                            <Link to={"/viewrescuerequest"} className="navlink">View Rescue Request</Link>
+                            <Link to={"/shelter/viewrescuerequest"} className="navlink">View Rescue Request</Link>
+                            <Link to={"/shelter/viewacceptedrequest"} className="navlink">View Accepted Request</Link>
                             <Link to={"/"} className="navlink" onClick={handleLogout}>Logout</Link>
                         </Nav>
                     </Navbar.Collapse>
