@@ -83,7 +83,8 @@ function App() {
   })
 
   const filteredPets = pets.filter(pet => {
-    return pet.s_name.toLowerCase().includes(petssearchfield.toLowerCase());
+    return (pet.s_name.toLowerCase().includes(petssearchfield.toLowerCase()) || pet.p_name.toLowerCase().includes(petssearchfield.toLowerCase()
+    ));
   })
 
 

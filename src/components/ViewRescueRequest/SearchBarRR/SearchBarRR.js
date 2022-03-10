@@ -10,7 +10,7 @@ const SearchBarRR = ({ setrrssearchfield }) => {
 			<input
 				className='adosar'
 				type='search'
-				placeholder='Search With Shelter Name'
+				placeholder='Search With Location Name'
 				onChange={event => (setrrssearchfield(event.target.value))}
 			/>
 

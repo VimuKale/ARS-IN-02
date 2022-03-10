@@ -25,7 +25,7 @@ function FooterComp() {
 
                             <div className="contact">
                                 <h3>
-                                    <a href="mailto: saathfoundationofficial@gmail.com">
+                                    <a href="mailto: saathfoundationofficial@gmail.com" className="contact-icon">
                                         <i
                                             className="fa fa-envelope"
                                             aria-hidden="true"
@@ -36,6 +36,7 @@ function FooterComp() {
                                         href="https://www.instagram.com/saath_animal_welfare_trust/"
                                         target={"_blank"}
                                         rel="noreferrer"
+                                        className="contact-icon"
                                     >
                                         <i
                                             className="fa fa-instagram"
@@ -43,7 +44,7 @@ function FooterComp() {
                                             style={{ color: "rgb(255, 211, 45" }}
                                         ></i>
                                     </a>
-                                    <a href="tel:+919271208802">
+                                    <a href="tel:+919271208802" className="contact-icon">
                                         <i
                                             className="fa fa-phone"
                                             aria-hidden="true"

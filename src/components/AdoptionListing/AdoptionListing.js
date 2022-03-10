@@ -1,10 +1,17 @@
-import React from 'react';
+import React, { useRef } from 'react';
 import Card from './Card';
 import { useState } from 'react';
+import { useReactToPrint } from 'react-to-print'
+import ReportsAdoption from '../../reports/ReportsAdoption';
 // import "./AdoptionListing.css";
 
 
 const AdoptionListing = ({ pets }) => {
+
+	const componentRef = useRef();
+	const handlePrint = useReactToPrint({
+		content: () => componentRef.current,
+	});
 
 	const [show, setShow] = useState(false);
 
@@ -96,6 +103,11 @@ const AdoptionListing = ({ pets }) => {
 
 	return (
 		<div>
+			<div style={{ display: "none" }}>
+				<ReportsAdoption ref={componentRef} pets={pets} />
+			</div>
+
+			<button onClick={handlePrint} style={{ position: "fixed", right: 0 }}>Print this out! </button>
 			{
 				pets.map((user, i) => {
 					return (

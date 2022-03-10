@@ -3,7 +3,7 @@ import { Col, Row, Form, Button, Spinner } from "react-bootstrap";
 import "./RescueRequestForm.css";
 import axios from "axios";
 
-// import emailjs from "emailjs-com";
+import emailjs from "emailjs-com";
 
 const RescueRequestForm = () => {
 
@@ -22,19 +22,9 @@ const RescueRequestForm = () => {
 
   const [loading, setLoading] = useState(false);
 
-  // function sendEmail(e) {
-  //   emailjs
-  //     .sendForm(
-  //       "service_am40ayj",
-  //       "template_f6kkbq9",
-  //       e.target,
-  //       "user_hU6tWtNolaney0jEPrLTY"
-  //     )
-  //     .then((res) => {
-  //       console.log(res);
-  //     })
-  //     .catch((err) => console.log(err));
-  // }
+
+
+
 
   const formData = new FormData();
 
@@ -51,6 +41,20 @@ const RescueRequestForm = () => {
   const handleRescuesubmit = (e) => {
 
     e.preventDefault();
+
+    emailjs
+      .sendForm(
+        "service_am40ayj",
+        "template_f6kkbq9",
+        e.target,
+        "user_hU6tWtNolaney0jEPrLTY"
+      )
+      .then((res) => {
+        console.log(res);
+      })
+      .catch((err) => console.log(err));
+
+
     setLoading(true);
 
     axios.post("http://localhost:3002/rescueimage", formData).then(res => {
@@ -75,7 +79,33 @@ const RescueRequestForm = () => {
 
       <form as={Col} className="form-cont" onSubmit={handleRescuesubmit}>
         <Row>
+          <Form.Group
+            className="mb-3 frm-grp-fild"
+            as={Col}
+            controlId="userName"
 
+          >
+            <Form.Label className="frm-lbl">Name</Form.Label>
+            <Form.Control type="text" name="name" placeholder="Enter Name" value={data.u_name} />
+          </Form.Group>
+
+          <Form.Group
+            className="mb-3 frm-grp-fild"
+            as={Col}
+            controlId="userEmail"
+
+          >
+            <Form.Label className="frm-lbl">Email Id</Form.Label>
+            <Form.Control
+              value={data.u_email}
+              type="email"
+              name="user_email"
+              placeholder="ex.Shelter@gmail.com"
+
+            />
+          </Form.Group>
+        </Row>
+        <Row>
           <Form.Group
             className="mb-3 frm-grp-fild"
             as={Col}

@@ -6,7 +6,7 @@ import Card from './Card';
 
 const ViewAcceptedRequest = ({ rrs }) => {
 
-	let data = JSON.parse(window.localStorage.getItem('data'));
+	// let data = JSON.parse(window.localStorage.getItem('data'));
 	const [show, setShow] = useState(false);
 	const [status, setStatus] = useState("Accepted");
 	const [statusid, setStatusID] = useState("");
@@ -34,7 +34,8 @@ const ViewAcceptedRequest = ({ rrs }) => {
 				status: status,
 				status_id: statusid
 			}),
-		}).then((response) => response.json())
+		})
+			.then((response) => response.json())
 			.then((message) => {
 				if (message === 'update done') {
 					alert("Record Updated");
@@ -45,7 +46,6 @@ const ViewAcceptedRequest = ({ rrs }) => {
 					alert("Failed To Update Record");
 				}
 			})
-			.catch((err) => alert("Failed To Update Record!"));
 	}
 
 
