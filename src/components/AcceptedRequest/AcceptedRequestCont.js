@@ -5,7 +5,7 @@ import ViewRescueRequest from './ViewAcceptedRequest'
 
 function AcceptedRequestCont() {
 
-    let data = JSON.parse(window.localStorage.getItem('data'));
+    // let data = JSON.parse(window.localStorage.getItem('data'));
 
     const [rrs, setRRS] = useState([]);
     const [rrssearchfield, setrrssearchfield] = useState('');

@@ -1,6 +1,6 @@
 import React from 'react';
 import './Card.css'
-import { Modal, Button, Col, Row, Form, Spinner } from 'react-bootstrap';
+import { Modal, Button, Col, Row, Form } from 'react-bootstrap';
 
 const Card = ({
 	u_id,

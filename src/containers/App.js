@@ -44,6 +44,12 @@ function App() {
   const [pets, setPets] = useState([]);
   const [petssearchfield, setpetssearchfield] = useState('');
 
+  const [petstartdate, setpetstartdate] = useState('');
+  const [petenddate, setpetenddate] = useState('');
+
+  const [thingsstartdate, setthingsstartdate] = useState('');
+  const [thingsenddate, setthingsenddate] = useState('');
+
 
   useEffect(() => {
 
@@ -76,15 +82,25 @@ function App() {
 
 
 
-
+  //thing.s_name.toLowerCase().includes(thingssearchfield.toLowerCase()) ||
 
   const filteredThings = things.filter(thing => {
-    return thing.s_name.toLowerCase().includes(thingssearchfield.toLowerCase());
+    return (
+
+      thing.s_name.toLowerCase().includes(thingssearchfield.toLowerCase()) 
+      // thing.date.toLowerCase().includes(thingsstartdate.toLowerCase())
+
+    );
   })
 
   const filteredPets = pets.filter(pet => {
-    return (pet.s_name.toLowerCase().includes(petssearchfield.toLowerCase()) || pet.p_name.toLowerCase().includes(petssearchfield.toLowerCase()
-    ));
+    // { console.log(petstartdate) }
+    return (
+      // pet.pet_list_date.toLowerCase().includes(petstartdate.toLowerCase()) ||
+      pet.s_name.toLowerCase().includes(petssearchfield.toLowerCase()) ||
+      pet.p_name.toLowerCase().includes(petssearchfield.toLowerCase())
+
+    );
   })
 
 
@@ -203,7 +219,7 @@ function App() {
               isShelter
                 ?
                 <>
-                  <SearchBarTT setthingssearchfield={setthingssearchfield} />
+                  <SearchBarTT setthingssearchfield={setthingssearchfield} things={filteredThings} thingsenddate={thingsenddate} thingsstartdate={thingsstartdate} setthingsenddate={setthingsenddate} setthingsstartdate={setthingsstartdate} />
                   <ThingsTable things={filteredThings} />
                 </>
                 :
@@ -216,7 +232,7 @@ function App() {
               isAdmin
                 ?
                 <>
-                  <SearchBarTT setthingssearchfield={setthingssearchfield} />
+                  <SearchBarTT setthingssearchfield={setthingssearchfield} things={filteredThings} thingsenddate={thingsenddate} thingsstartdate={thingsstartdate} setthingsenddate={setthingsenddate} setthingsstartdate={setthingsstartdate} />
                   <ThingsTable things={filteredThings} />
                 </>
                 :
@@ -246,7 +262,7 @@ function App() {
           <Route path="/shelter/adoptionlisting">
             {isShelter ?
               <>
-                <SearchBarAL setpetssearchfield={setpetssearchfield} />
+                <SearchBarAL setpetssearchfield={setpetssearchfield} pets={filteredPets} setpetstartdate={setpetstartdate} setpetenddate={setpetenddate} petstartdate={petstartdate} petenddate={petenddate} />
                 <Scroll>
                   <AdoptionListing pets={filteredPets} />
                 </Scroll>
@@ -258,7 +274,7 @@ function App() {
           <Route path="/admin/adoptionlisting">
             {isAdmin ?
               <>
-                <SearchBarAL setpetssearchfield={setpetssearchfield} />
+                <SearchBarAL setpetssearchfield={setpetssearchfield} pets={filteredPets} setpetstartdate={setpetstartdate} setpetenddate={setpetenddate} petstartdate={petstartdate} petenddate={petenddate} />
                 <Scroll>
                   <AdoptionListing pets={filteredPets} />
                 </Scroll>
