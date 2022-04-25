@@ -32,7 +32,7 @@ function RescueRequestCont() {
     const filteredRRS = rrs.filter(rr => {
         return (
             rr.ra_loc.toLowerCase().includes(rrssearchfield.toLowerCase())
-            // rr.date.toLowerCase().includes(rescuestartdate.toLowerCase())
+            // ||rr.date.toLowerCase().includes(rescuestartdate.toLowerCase())
         );
     })
 

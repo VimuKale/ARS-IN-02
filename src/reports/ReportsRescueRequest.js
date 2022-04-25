@@ -6,7 +6,6 @@ export default class ReportsRescueRequest extends Component {
         return (
             <div>
                 <h1 style={{ textAlign: "center" }}>Rescue Requests Report</h1>
-                <h2 style={{ textAlign: "center" }}>Date Wise</h2>
                 <hr />
                 <table >
                     <thead style={{ textAlign: 'left' }}>

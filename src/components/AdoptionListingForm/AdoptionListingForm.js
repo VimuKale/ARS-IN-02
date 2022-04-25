@@ -25,7 +25,12 @@ const AdoptionListingForm = () => {
     const handlepetlist = (e) => {
 
         e.preventDefault();
-        setLoading(true);
+
+        if(petName===""||petType === "" || petDesc === "" || petImage === ""){
+            alert("Fields Seems To Be Empty");
+        }else{
+
+            setLoading(true);
 
         axios.post("http://localhost:3002/adoptionimage", formData).then(res => {
             if (res.data.message === "success") {
@@ -39,6 +44,8 @@ const AdoptionListingForm = () => {
             alert("Inavalid Data | Something Went Wrong");
 
         })
+
+        }  
 
     }
 

@@ -25,43 +25,52 @@ const UserRegister = () => {
     const handleuserregister = (e) => {
         e.preventDefault();
 
-        if (userConfPassword === userPassword) {
-            setLoading(true);
-            fetch("http://localhost:3002/userregister", {
-                method: "post",
-                headers: {
-                    "Content-Type": "application/json",
-                    Accept: "application/json",
-                },
-                body: JSON.stringify({
-                    u_name: userName,
-                    u_phno: userPhno,
-                    u_email: userEmail,
-                    u_password: userPassword,
-                    u_addr: userAddr,
-                    u_city: userCity,
-                    u_state: userState,
-                    u_zip: userZip
-                }),
-            }).then((response) => response.json())
-                .then((res) => {
-                    setLoading(false);
-                    alert("User Registered");
-                    e.target.reset();
-                    if (res === "unable to register") {
+        if(userName === "" || userPhno === "" || userEmail === "" || userPassword ==="" ||
+            userConfPassword === "" || userAddr === "" || userCity === "" || userState === "" ||
+            userZip === ""){
+                alert("Fields Seems To Be Empty");
+            }
+        else{
+            if (userConfPassword === userPassword) {
+                setLoading(true);
+                fetch("http://localhost:3002/userregister", {
+                    method: "post",
+                    headers: {
+                        "Content-Type": "application/json",
+                        Accept: "application/json",
+                    },
+                    body: JSON.stringify({
+                        u_name: userName,
+                        u_phno: userPhno,
+                        u_email: userEmail,
+                        u_password: userPassword,
+                        u_addr: userAddr,
+                        u_city: userCity,
+                        u_state: userState,
+                        u_zip: userZip
+                    }),
+                }).then((response) => response.json())
+                    .then((res) => {
                         setLoading(false);
-                        alert("Failed To Register User");
+                        alert("User Registered");
                         e.target.reset();
-                    }
-                })
-                .catch(err => {
-                    setLoading(false);
-                    alert("Inavalid Data | Something Went Wrong");
-
-                })
-        } else {
-            alert("PASSWORD & CONFIRM PASSWORD DIDN'T MATCH")
+                        if (res === "unable to register") {
+                            setLoading(false);
+                            alert("Failed To Register User");
+                            e.target.reset();
+                        }
+                    })
+                    .catch(err => {
+                        setLoading(false);
+                        alert("Inavalid Data | Something Went Wrong");
+    
+                    })
+            } else {
+                alert("PASSWORD & CONFIRM PASSWORD DIDN'T MATCH")
+            }
         }
+
+        
 
 
     }

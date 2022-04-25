@@ -20,44 +20,53 @@ const ShelterRegistration = () => {
     const handleshelterregister = (e) => {
         e.preventDefault();
 
-        if (shelterConfPassword === shelterPassword) {
-            setLoading(true);
-            fetch("http://localhost:3002/shelterregister", {
-                method: "post",
-                headers: {
-                    "Content-Type": "application/json",
-                    Accept: "application/json",
-                },
-                body: JSON.stringify({
-                    s_name: shelterName,
-                    s_phno: shelterphno,
-                    s_cat: shelterCat,
-                    s_email: shelterEmail,
-                    s_password: shelterPassword,
-                    s_addr: shelterAddr,
-                    s_city: shelterCity,
-                    s_state: shelterState,
-                    s_zip: shelterZip
-                }),
-            }).then((response) => response.json())
-                .then((res) => {
-                    setLoading(false);
-                    alert("User Registered");
-                    e.target.reset();
-                    if (res === "unable to register") {
-                        setLoading(false);
-                        alert("Failed To Register User");
-                        e.target.reset();
-                    }
-                })
-                .catch(err => {
-                    setLoading(false);
-                    alert("Inavalid Data | Something Went Wrong");
-
-                })
-        } else {
-            alert("PASSWORD & CONFIRM PASSWORD DIDN'T MATCH")
+        if(shelterName === "" || shelterCat === "" || shelterphno === "" || 
+        shelterEmail === "" || shelterPassword === "" || shelterConfPassword ===""||
+        shelterAddr === "" || shelterCity === "" || shelterState === "" || shelterZip === ""){
+            alert("Fields Seems To Be Empty");
         }
+        else{
+            if (shelterConfPassword === shelterPassword) {
+                setLoading(true);
+                fetch("http://localhost:3002/shelterregister", {
+                    method: "post",
+                    headers: {
+                        "Content-Type": "application/json",
+                        Accept: "application/json",
+                    },
+                    body: JSON.stringify({
+                        s_name: shelterName,
+                        s_phno: shelterphno,
+                        s_cat: shelterCat,
+                        s_email: shelterEmail,
+                        s_password: shelterPassword,
+                        s_addr: shelterAddr,
+                        s_city: shelterCity,
+                        s_state: shelterState,
+                        s_zip: shelterZip
+                    }),
+                }).then((response) => response.json())
+                    .then((res) => {
+                        setLoading(false);
+                        alert("User Registered");
+                        e.target.reset();
+                        if (res === "unable to register") {
+                            setLoading(false);
+                            alert("Failed To Register User");
+                            e.target.reset();
+                        }
+                    })
+                    .catch(err => {
+                        setLoading(false);
+                        alert("Inavalid Data | Something Went Wrong");
+    
+                    })
+            } else {
+                alert("PASSWORD & CONFIRM PASSWORD DIDN'T MATCH")
+            }
+        }
+
+        
 
 
     }

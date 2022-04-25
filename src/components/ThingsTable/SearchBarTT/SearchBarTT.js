@@ -27,7 +27,7 @@ const SearchBarTT = ({ setthingssearchfield, things, thingsstartdate, thingsendd
             onChange={e => (setthingsstartdate(e.target.value))}
           />
 
-          <input
+          {/* <input
             type={'date'}
             value={thingsenddate}
             onChange={e => (setthingsenddate(e.target.value))}
@@ -39,7 +39,7 @@ const SearchBarTT = ({ setthingssearchfield, things, thingsstartdate, thingsendd
           // 	setpetstartdate(startdate);
           // 	setpetenddate(enddate);
           // }}
-          >search date wise</button>
+          >search date wise</button> */}
         </div>
 
         <div>

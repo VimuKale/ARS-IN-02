@@ -18,44 +18,54 @@ const AdminRegisterForm = () => {
     const [loading, setLoading] = useState(false);
 
     const onSubmitVal = (e) => {
-        e.preventDefault();
-        if (a_c_password === a_password) {
-            setLoading(true);
-            fetch("http://localhost:3002/adminregister", {
-                method: "post",
-                headers: {
-                    "Content-Type": "application/json",
-                    Accept: "application/json",
-                },
-                body: JSON.stringify({
-                    a_name: a_name,
-                    a_phno: a_phno,
-                    a_email: a_email,
-                    a_password: a_password,
-                    a_addr: a_addr,
-                    a_city: a_city,
-                    a_state: a_state,
-                    a_zip: a_zip,
 
-                }),
-            })
-                .then((response) => response.json())
-                .then((data) => {
-                    console.log(data);
-                    if (data.message_type === "success") {
-                        alert("Admin Registered Successfully.")
-                        setLoading(false);
-                        e.target.reset();
-                    }
-                    else if (data.message === "fail") {
-                        alert("Unable To Register Admin")
-                        setLoading(false)
-                    }
-                });
-        }
-        else {
-            alert("PASSWORD & CONFIRM PASSWORD DIDN'T MATCH")
-        }
+        e.preventDefault();
+
+        if(a_name === "" || a_phno ==="" || a_email === "" || a_password === "" || a_c_password === ""||
+            a_addr === "" || a_city === "" || a_state === "" || a_zip === ""){
+                alert("Fields Seems To Be Empty");
+            }
+        else{
+            if (a_c_password === a_password) {
+                setLoading(true);
+                fetch("http://localhost:3002/adminregister", {
+                    method: "post",
+                    headers: {
+                        "Content-Type": "application/json",
+                        Accept: "application/json",
+                    },
+                    body: JSON.stringify({
+                        a_name: a_name,
+                        a_phno: a_phno,
+                        a_email: a_email,
+                        a_password: a_password,
+                        a_addr: a_addr,
+                        a_city: a_city,
+                        a_state: a_state,
+                        a_zip: a_zip,
+    
+                    }),
+                })
+                    .then((response) => response.json())
+                    .then((data) => {
+                        console.log(data);
+                        if (data.message_type === "success") {
+                            alert("Admin Registered Successfully.")
+                            setLoading(false);
+                            e.target.reset();
+                        }
+                        else if (data.message === "fail") {
+                            alert("Unable To Register Admin")
+                            setLoading(false)
+                        }
+                    });
+            }
+            else {
+                alert("PASSWORD & CONFIRM PASSWORD DIDN'T MATCH")
+            }
+            }
+
+        
 
     }
 

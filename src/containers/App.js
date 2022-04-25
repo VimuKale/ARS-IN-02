@@ -82,13 +82,13 @@ function App() {
 
 
 
-  //thing.s_name.toLowerCase().includes(thingssearchfield.toLowerCase()) ||
+  
 
   const filteredThings = things.filter(thing => {
     return (
 
       thing.s_name.toLowerCase().includes(thingssearchfield.toLowerCase()) 
-      // thing.date.toLowerCase().includes(thingsstartdate.toLowerCase())
+      // ||thing.date.toLowerCase().includes(thingsstartdate.toLowerCase())
 
     );
   })
@@ -96,9 +96,11 @@ function App() {
   const filteredPets = pets.filter(pet => {
     // { console.log(petstartdate) }
     return (
-      // pet.pet_list_date.toLowerCase().includes(petstartdate.toLowerCase()) ||
+      
       pet.s_name.toLowerCase().includes(petssearchfield.toLowerCase()) ||
-      pet.p_name.toLowerCase().includes(petssearchfield.toLowerCase())
+      pet.p_name.toLowerCase().includes(petssearchfield.toLowerCase()) 
+      // ||pet.pet_list_date.toLowerCase().includes(petstartdate.toLowerCase())
+      
 
     );
   })

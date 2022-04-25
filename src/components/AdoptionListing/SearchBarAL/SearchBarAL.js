@@ -27,19 +27,19 @@ const SearchBarAL = ({ setpetssearchfield, pets, setpetstartdate, setpetenddate,
 						onChange={e => (setpetstartdate(e.target.value))}
 					/>
 
-					<input
+					{/* <input
 						type={'date'}
 						value={petenddate}
 						onChange={e => (setpetenddate(e.target.value))}
-					/>
+					/> */}
 
-					<button
+					{/* <button
 					// onClick={() => {
 					// 	console.log(startdate, enddate);
 					// 	setpetstartdate(startdate);
 					// 	setpetenddate(enddate);
 					// }}
-					>search date wise</button>
+					>search date wise</button> */}
 				</div>
 
 				<div>

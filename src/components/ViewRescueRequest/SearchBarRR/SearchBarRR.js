@@ -25,13 +25,13 @@ const SearchBarRR = ({ setrrssearchfield, rrs, rescuestartdate, rescueenddate, s
 						onChange={e => (setrescuestartdate(e.target.value))}
 					/>
 
-					<input
+					{/* <input
 						type={'date'}
 						value={rescueenddate}
 						onChange={e => (setrescueenddate(e.target.value))}
 					/>
 
-					<button>search date wise</button>
+					<button>search date wise</button> */}
 				</div>
 
 				<div>

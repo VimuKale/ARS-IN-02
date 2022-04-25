@@ -22,7 +22,15 @@ const RescueRequestForm = () => {
 
   const [loading, setLoading] = useState(false);
 
+  const today = new Date();
+  const yyyy = today.getFullYear();
+  let mm = today.getMonth()+1;
+  let dd = today.getDate();
 
+  if(dd < 10) dd = '0' + dd;
+  if(mm < 10) mm = '0' + mm;
+
+  const date = yyyy+'-'+mm+'-'+dd;
 
 
 
@@ -36,13 +44,23 @@ const RescueRequestForm = () => {
   formData.append("ra_city", rescueCity);
   formData.append("ra_zip", rescueZip);
   formData.append("petImg", animalImg);
+  formData.append("year",yyyy+"yy");
+  formData.append("month",mm+"mm");
+  formData.append("day",dd+"dd");
+  formData.append("date",date);
+
 
 
   const handleRescuesubmit = (e) => {
-
     e.preventDefault();
+    if(animalType === "" || animalDesc === "" || rescueLoc === "" || rescueLandmark === "" ||
+        rescueCity === "" || rescueZip === "" ||
+        animalImg === ""){
+          alert("Fields Seems To Be Empty");
+        }
+        else{
 
-    emailjs
+          emailjs
       .sendForm(
         "service_am40ayj",
         "template_f6kkbq9",
@@ -71,6 +89,13 @@ const RescueRequestForm = () => {
 
     })
 
+
+        }
+
+
+    
+
+    
   }
 
   return (

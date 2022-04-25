@@ -6,7 +6,7 @@ export default class ReportsThings extends Component {
         return (
             <div>
                 <h1 style={{ textAlign: "center" }}>Donation Listing Report</h1>
-                <h2 style={{ textAlign: "center" }}>Date Wise</h2>
+                {/* <h2 style={{ textAlign: "center" }}>Date Wise</h2> */}
                 <hr />
                 <table >
                     <thead style={{ textAlign: 'left' }}>
@@ -14,7 +14,7 @@ export default class ReportsThings extends Component {
                         <th>Pet name</th>
                         <th>Description</th>
                         <th>Type</th>
-                        <th>Shelter Name</th>
+                        <th>Quantity</th>
                         <th>Listing Date</th>
                     </thead>
                     <tbody>

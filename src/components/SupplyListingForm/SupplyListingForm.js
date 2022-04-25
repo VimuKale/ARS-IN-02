@@ -20,9 +20,13 @@ const SupplyListingForm = () => {
 
 
     const handlesupplylist = (e) => {
-
         e.preventDefault();
-        setLoading(true);
+
+        if(itemName==="" || itemDesc === "" || itemQty==="" || itemCost===""|| deliverTo === "" || linkToSrc ==="" ||TimeFrame===""||itemStatus===""){
+            alert("Fields Seems To Be Empty");
+        }else{
+
+            setLoading(true);
         fetch("http://localhost:3002/supplylisting", {
             method: "post",
             headers: {
@@ -59,6 +63,11 @@ const SupplyListingForm = () => {
 
             })
 
+
+        }
+
+       
+        
     }
 
     return (
